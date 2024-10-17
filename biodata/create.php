@@ -1,22 +1,20 @@
 <?php 
-
-include "konekdb.php"; // Pastikan database telah dipilih di sini
 header('Content-Type: application/json');
+include "konekdb.php";
 
 $nama = $_POST['nama'];
 $nis = $_POST['nis'];
 $tplahir = $_POST['tplahir'];
 $tglahir = $_POST['tglahir'];
-$nkelamin = $_POST['kelamin'];
+$nkelamin= $_POST['kelamin'];
 $agama = $_POST['agama'];
 $alamat = $_POST['alamat'];
 
-// Gunakan $db, bukan $nm_database
-$stmt = $db->prepare("INSERT INTO siswa (nis, nama, tplahir, tglahir, kelamin, agama, alamat) VALUES (?, ?, ?, ?, ?, ?, ?)" );
-$result = $stmt->execute([$nis, $nama, $tplahir, $tglahir, $nkelamin, $agama, $alamat]);
+$stmt = $db->prepare("INSERT INTO siswa (nis, nama. tplahir, tglahir, kelamin, agama, alamat) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$result = $stmt->execute([$nis, $nama, $tplahir, $tglahir, $kelamin, $agma, $alamat]);
 
 echo json_encode([
-    'success' => $result
+    'succes' => $result
 ]);
 
 ?>

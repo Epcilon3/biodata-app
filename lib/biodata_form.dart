@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:intl/intl.dart';
 import 'package:biodata_app/biodata_detail.dart';
-import 'package:biodata_app/home.dart';
-import 'package:http/http.dart' as http;
-import 'package:biodata_app/models/api.dart';
-import 'dart:convert';
 
 class BiodataForm extends StatefulWidget {
   @override
@@ -13,39 +9,7 @@ class BiodataForm extends StatefulWidget {
 }
 
 class _BiodataFormState extends State<BiodataForm> {
-  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final _formKey = GlobalKey<FormState>();
-  
-  TextEditingController nisController = new TextEditingController();
-  TextEditingController namaController = new TextEditingController();
-  TextEditingController tpController = new TextEditingController();
-  TextEditingController tgController = new TextEditingController();
-  TextEditingController kelaminController = new TextEditingController();
-  TextEditingController agamaController = new TextEditingController();
-  TextEditingController alamatController = new TextEditingController();
-
-  Future createSw() async {
-    return await http.post(
-      Uri.parse(BaseUrl.tambah),
-      body: {
-        "nis": nisController.text,
-        "nama": namaController.text,
-        "tplahir": tpController.text,
-        "tglahir": tgController.text,
-        "kelamin": kelaminController.text,
-        "agama": agamaController.text,
-        "alamat": alamatController.text,
-      },
-    );
-  }
-  void _onConfirm(context) async {
-    http.Response response = await createSw();
-    final data = json.decode(response.body);
-    if (data['succes']) {
-      Navigator.of(context) 
-        .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
-    }
-  }
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String _name = '';
   String _email = '';
@@ -96,28 +60,9 @@ class _BiodataFormState extends State<BiodataForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Form Tambah Siswa '),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
+        title: Text('Form Biodata'),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: ElevatedButton(
-          child: Text("Simpan"),
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.black,
-            backgroundColor: Colors.green,
-            textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-          ),
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              print("OKE SUKSES");
-              _onConfirm(context);
-            }
-          }
-        )
-       
-      ),
-      body: Container(
+      body: Form(
         key: _formKey,
         child: Padding(
           padding: EdgeInsets.all(20.0),

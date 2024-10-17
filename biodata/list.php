@@ -1,7 +1,7 @@
 <?php
 // Ganti dengan konfigurasi database kamu
 $host = 'localhost';
-$dbname = 'sekolah'; // Ganti dengan nama database kamu
+$dbname = 'biodata'; // Ganti dengan nama database kamu
 $username = 'root'; // Ganti dengan username kamu
 $password = ''; // Ganti dengan password kamu
 

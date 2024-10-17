@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home.dart'; // Pastikan nama file ini sesuai dengan nama file yang Anda simpan untuk kelas BiodataForm
+import 'biodata_form.dart'; // Pastikan nama file ini sesuai dengan nama file yang Anda simpan untuk kelas BiodataForm
 
 
 void main() {
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         
       ),
-      title: 'Home',
-      home: Home(), // Menampilkan BiodataForm sebagai tampilan utama
+      title: 'Form Biodata App',
+      home: BiodataForm(), // Menampilkan BiodataForm sebagai tampilan utama
     );
   }
 }
